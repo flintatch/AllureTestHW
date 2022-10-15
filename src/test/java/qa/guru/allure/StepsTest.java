@@ -38,9 +38,16 @@ public class StepsTest {
         step("Открываем таб Issues", () -> {
             $("#issues-tab").click();
         });
+    }
 
-        step("Сверяемся по тексту с Issue и номером", + ISSUE, () -> {
-            $(withText("#" + ISSUE)).should(Condition.exist);
-        });
+    @Test
+    public void testAnnotatedStep() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        WebSteps steps = new WebSteps();
+
+        steps.openMainPage();
+        steps.searchForRepository(REPOSITORY);
+        steps.clickOnRepositoryLink(REPOSITORY);
+        steps.openIssuesTab();
     }
 }
