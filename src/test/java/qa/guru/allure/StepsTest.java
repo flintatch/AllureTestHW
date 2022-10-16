@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
@@ -40,7 +41,7 @@ public class StepsTest {
             $("#issues-tab").click();
         });
 
-        step("Сверяемся по тексту с Issue и номером", + ISSUE, () -> {
+        step("Сверяемся по тексту с Issue и номером" + ISSUE, () -> {
                 $(Selectors.withText("#" + ISSUE)).should(Condition.visible);
         });
     }
