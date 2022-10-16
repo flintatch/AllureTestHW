@@ -1,6 +1,7 @@
 package qa.guru.allure;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Allure;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -37,6 +38,10 @@ public class StepsTest {
 
         step("Открываем таб Issues", () -> {
             $("#issues-tab").click();
+        });
+
+        step("Сверяемся по тексту с Issue и номером", + ISSUE, () -> {
+                $(Selectors.withText("#" + ISSUE)).should(Condition.visible);
         });
     }
 
